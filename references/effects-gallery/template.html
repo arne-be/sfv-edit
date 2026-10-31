@@ -1,0 +1,218 @@
+<title>sfv-edit Effects</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: catalogue grid, each card = looping mini phone + the plan line that triggers it */
+:root{--bg:oklch(97.5% .006 200);--panel:oklch(100% 0 0);--fg:oklch(22% .03 215);--muted:oklch(46% .02 215);--line:oklch(89% .012 210);--accent:oklch(62% .19 48);--code:oklch(94.5% .01 210);
+--disp:'Space Grotesk',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:oklch(18% .025 215);--panel:oklch(22% .025 215);--fg:oklch(97% .005 90);--muted:oklch(76% .02 215);--line:oklch(30% .03 215);--accent:oklch(72% .18 50);--code:oklch(15.5% .02 215);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:oklch(18% .025 215);--panel:oklch(22% .025 215);--fg:oklch(97% .005 90);--muted:oklch(76% .02 215);--line:oklch(30% .03 215);--accent:oklch(72% .18 50);--code:oklch(15.5% .02 215);color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1{font:700 clamp(32px,6vw,52px)/1 var(--disp);letter-spacing:-.03em;margin:0 0 12px;text-wrap:balance}
+h1 span{color:var(--accent)}
+.intro{max-width:64ch;color:var(--muted);margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;font-size:13px;color:var(--muted);align-items:center}
+h2{font:700 24px/1.1 var(--disp);letter-spacing:-.02em;margin:0 0 4px;display:flex;gap:10px;align-items:baseline}
+h2 small{font:600 13px var(--body);color:var(--muted);letter-spacing:0}
+.sdesc{margin:0 0 16px;color:var(--muted);max-width:70ch;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px}
+.card{display:grid;grid-template-columns:128px minmax(0,1fr);gap:16px;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;align-items:start}
+.card h3{font:600 18px/1.2 var(--disp);margin:2px 0 0;letter-spacing:-.01em}
+.card p{margin:6px 0 10px;color:var(--muted);font-size:13.5px;line-height:1.5}
+code.pl{display:block;font:11.5px/1.5 var(--mono);background:var(--code);padding:7px 9px;border-radius:6px;overflow-x:auto;white-space:pre}
+.badge{display:inline-block;font:700 10.5px/1 var(--body);letter-spacing:.07em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1px solid var(--accent);color:var(--accent);margin-top:10px}
+.badge.skip{border-style:dashed;color:var(--muted);border-color:var(--muted)}
+.plain{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.plain ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.plain b{font-family:var(--disp)}
+.sfx{display:flex;flex-wrap:wrap;gap:10px}
+.sfx button{font:600 14px var(--mono);padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);cursor:pointer;display:flex;gap:8px;align-items:center}
+.sfx button:hover{border-color:var(--accent)}
+.sfx button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sfx button::before{content:"";border-left:9px solid var(--accent);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.foot{color:var(--muted);font-size:13px}
+
+/* ---------- phone (fixed footage look, same in both themes) ---------- */
+.ph{position:relative;width:100%;aspect-ratio:9/16;border-radius:12px;overflow:hidden;container-type:inline-size;background:#3b4541;isolation:isolate;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.sc{position:absolute;inset:0;transform-origin:50% 32%}
+.wall{position:absolute;inset:0;background:linear-gradient(175deg,#86908a 0%,#5c6761 55%,#3b4541 100%)}
+.nk{position:absolute;left:42cqw;width:16cqw;top:76cqw;height:12cqw;background:#c48f74;z-index:2}
+.bd{position:absolute;left:9cqw;width:82cqw;top:84cqw;height:110cqw;background:#ecebe6;border-radius:32cqw 32cqw 0 0;z-index:2}
+.hd{position:absolute;left:31cqw;width:38cqw;top:36cqw;height:47cqw;border-radius:50% 50% 46% 46%;z-index:3;
+ background:radial-gradient(circle at 34% 54%,#2a2320 0 1.6cqw,transparent 1.8cqw),radial-gradient(circle at 66% 54%,#2a2320 0 1.6cqw,transparent 1.8cqw),#d7a487}
+.hd::before{content:"";position:absolute;left:-2cqw;right:-2cqw;top:-3cqw;height:18cqw;background:#3b2b23;border-radius:20cqw 20cqw 6cqw 6cqw}
+.ph b{color:oklch(72% .18 50);font-weight:inherit}
+.bar{font:700 6.4cqw/1.18 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.02em;padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+ background:linear-gradient(transparent 15%,oklch(22% .04 200 / .92) 15%,oklch(22% .04 200 / .92) 92%,transparent 92%)}
+.subs{position:absolute;left:0;right:0;top:124cqw;z-index:12}
+.ch{position:absolute;left:0;right:0;text-align:center;opacity:0;animation:chunk 4s infinite}
+.c2{animation-delay:-2.667s}.c3{animation-delay:-1.333s}
+.tag{position:absolute;top:5cqw;left:5cqw;z-index:13;font:700 4cqw/1 'JetBrains Mono',monospace;color:#1a1a1a;background:#FAE67A;padding:1.2cqw 2cqw;border-radius:1cqw;opacity:0;animation:flash 4s infinite}
+.fgt{position:absolute;left:0;right:0;text-align:center;z-index:11}
+.shadow{text-shadow:0 1cqw 4cqw rgba(0,0,0,.55),0 .4cqw 1cqw rgba(0,0,0,.4)}
+.mat{background:linear-gradient(160deg,#9fb3b9 0%,#5d7470 45%,#7a6447 100%)}
+.mat2{background:linear-gradient(200deg,#c9b38f 0%,#6e7b62 55%,#33403b 100%)}
+.mat3{background:linear-gradient(140deg,#5a6c86 0%,#8ea3b0 50%,#d8c7a4 100%)}
+.lbl{position:absolute;left:2cqw;bottom:2cqw;font:500 3.2cqw 'JetBrains Mono',monospace;color:#fff;background:rgba(0,0,0,.45);padding:.6cqw 1.4cqw;border-radius:.8cqw}
+
+/* camera */
+.zoom{animation:zoom 4s infinite}
+.punch-sc{animation:punch 4s infinite}
+.push{animation:push 4s linear infinite}
+.focus{animation:focus 4s infinite}
+.sweep{position:absolute;inset:0;z-index:11;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);animation:sweep 4s ease-in-out infinite}
+.ns-subs{position:absolute;inset:0;z-index:12;animation:nsSubs 4s infinite}
+.ns-top{top:8cqw;font:700 16cqw/1 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.03em;opacity:0;animation:nsTop 4s infinite}
+/* text */
+.pop{animation:pop 4s infinite both}
+.cap{top:100cqw;display:flex;flex-direction:column;align-items:center;gap:.6cqw}
+.cap .lead .bar{font-size:4.4cqw}.cap .big .bar{font-size:7.8cqw}
+.punch{top:98cqw;font:700 15cqw/1 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.03em}
+.behind{position:absolute;left:0;right:0;top:22cqw;text-align:center;z-index:1;font:700 19cqw/.9 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.035em}
+.caps{top:106cqw}.caps .w{display:inline-block;animation:track 4s infinite both;animation-delay:calc(var(--i)*.22s)}
+.caps .bar{font:700 3.8cqw/1.6 'Manrope',sans-serif;text-transform:uppercase;color:oklch(72% .18 50);letter-spacing:.1em;padding:0 .3em}
+.rise{top:94cqw;font:600 18cqw/1.05 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.035em}
+.rise .m{display:inline-block;overflow:hidden;vertical-align:top}
+.rise .m span{display:inline-block;animation:rise 4s infinite both;animation-delay:calc(var(--i)*.08s)}
+.ital{top:99cqw;font:700 14cqw/1 'Space Grotesk',sans-serif;color:oklch(72% .18 50);letter-spacing:-.03em}
+.spk{position:absolute;z-index:11;color:#FAE67A;line-height:1;animation:twinkle 4s infinite both;text-shadow:0 0 3cqw rgba(250,230,122,.7)}
+.note{position:absolute;left:6cqw;top:8cqw;z-index:11;font:600 10cqw/1 'Caveat',cursive;color:#FAE67A;transform:rotate(-6deg);animation:fadeHold 4s infinite both}
+.arrow{position:absolute;inset:0;width:100%;height:100%;z-index:11}
+.arrow path{fill:none;stroke:#FAE67A;stroke-width:1.1;stroke-linecap:round;stroke-dasharray:100;animation:draw 4s infinite both}
+.frame{position:absolute;z-index:1;left:70cqw;top:14cqw;width:20cqw;height:15cqw;border:1cqw solid #2f2722;background:linear-gradient(#a9b9b5,#6c7c6d)}
+/* material */
+.print{position:absolute;left:23cqw;top:92cqw;width:54cqw;height:37cqw;border-radius:1.4cqw;z-index:11;box-shadow:0 3cqw 7cqw rgba(0,0,0,.5);opacity:0}
+.p1{animation:drop1 4s infinite}.p2{animation:drop2 4s infinite}.p3{animation:drop3 4s infinite}
+.pip{position:absolute;left:6cqw;width:88cqw;top:90cqw;height:56cqw;border-radius:1.4cqw;z-index:11;box-shadow:0 3cqw 7cqw rgba(0,0,0,.5);animation:inout 4s infinite both}
+.splitsc{animation:splitsc 4s infinite}
+.splitmat{position:absolute;left:0;right:0;top:0;height:78cqw;z-index:11;animation:splitmat 4s infinite}
+.cutfull{position:absolute;inset:0;z-index:11;opacity:0;animation:cutfull 4s infinite}
+.rain{position:absolute;inset:0;background:repeating-linear-gradient(105deg,transparent 0 3cqw,rgba(255,255,255,.18) 3cqw 3.3cqw);animation:rain .6s linear infinite}
+.rc{position:absolute;top:30cqw;width:24cqw;height:43cqw;border-radius:1.6cqw;z-index:11;box-shadow:0 2cqw 5cqw rgba(0,0,0,.45);overflow:hidden}
+.rcL{left:3cqw;animation:rcl 4s infinite both}.rcR{right:3cqw;animation:rcr 4s infinite both}
+.rc .cr{position:absolute;left:0;right:0;bottom:1.5cqw;text-align:center;font:600 2.8cqw 'Manrope',sans-serif;color:#fff}
+.ot{position:absolute;width:15cqw;height:27cqw;border-radius:1.2cqw;box-shadow:0 1.5cqw 3cqw rgba(0,0,0,.4)}
+.win{position:absolute;z-index:1;left:8cqw;top:5cqw;width:84cqw;height:54cqw;border-radius:2cqw;background:#f6f5f2;box-shadow:0 3cqw 8cqw rgba(0,0,0,.35);animation:inout 4s infinite both;overflow:hidden}
+.win .tb{height:6cqw;background:#e6e3dd;display:flex;gap:1.2cqw;align-items:center;padding-left:2.5cqw}
+.win .tb i{width:1.8cqw;height:1.8cqw;border-radius:50%;background:#c9c4bb}
+.win .ln{height:2.4cqw;border-radius:1cqw;background:#d9d5ce;margin:2.5cqw 4cqw 0}
+.win .ln.o{background:oklch(72% .18 50);width:30%}
+.cuc{position:absolute;left:12cqw;width:76cqw;top:90cqw;height:44cqw;z-index:11;border-radius:2cqw;background:#1d2326;padding:3cqw;box-sizing:border-box;box-shadow:0 3cqw 8cqw rgba(0,0,0,.5);animation:cucin 4s infinite both;display:flex;flex-direction:column;gap:2cqw}
+.cuc i{display:block;height:2.4cqw;border-radius:1cqw;background:#4b5a5f}
+.cuc i:nth-child(2){width:60%;background:#c98a5a}.cuc i:nth-child(4){width:75%;background:#7aa2a5}.cuc i:nth-child(6){width:45%}
+.ins{position:absolute;z-index:11;height:auto;animation:inout 4s infinite both}
+.insfull{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:11;opacity:0;animation:cutfull 4s infinite}
+
+@keyframes chunk{0%,33%{opacity:1}33.4%,100%{opacity:0}}
+@keyframes flash{0%,49%{opacity:0}50%,62%{opacity:1}66%,100%{opacity:0}}
+@keyframes zoom{0%,49.5%{transform:scale(1)}50%,100%{transform:scale(1.3)}}
+@keyframes punch{0%,49.5%{transform:scale(1)}50%{transform:scale(1.09)}60%,100%{transform:scale(1)}}
+@keyframes push{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes focus{0%{filter:blur(6px)}30%,100%{filter:blur(0)}}
+@keyframes sweep{0%{transform:translateX(-110%)}55%,100%{transform:translateX(110%)}}
+@keyframes nsSubs{0%,30%{opacity:1}31%,84%{opacity:0}85%,100%{opacity:1}}
+@keyframes nsTop{0%,30%{opacity:0;transform:scale(.9)}36%,82%{opacity:1;transform:none}85%,100%{opacity:0}}
+@keyframes pop{0%{opacity:0;filter:blur(6px);transform:scale(.8)}12%{opacity:1;filter:blur(0);transform:scale(1.05)}18%,85%{opacity:1;transform:scale(1)}93%,100%{opacity:0;transform:scale(1)}}
+@keyframes track{0%{opacity:0;transform:translateX(5cqw);letter-spacing:.4em}14%,85%{opacity:1;transform:none;letter-spacing:normal}95%,100%{opacity:0}}
+@keyframes rise{0%{transform:translateY(110%)}14%,85%{transform:none}96%,100%{transform:translateY(110%)}}
+@keyframes twinkle{0%,100%{transform:scale(0) rotate(0)}15%{transform:scale(1.25) rotate(45deg)}30%{transform:scale(.8) rotate(80deg)}45%{transform:scale(0) rotate(120deg)}}
+@keyframes fadeHold{0%{opacity:0}10%,85%{opacity:1}95%,100%{opacity:0}}
+@keyframes draw{0%,8%{stroke-dashoffset:100;opacity:1}35%,85%{stroke-dashoffset:0;opacity:1}95%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes drop1{0%{opacity:0;transform:translateY(-35cqw) rotate(-14deg)}8%,86%{opacity:1;transform:rotate(-5deg)}94%,100%{opacity:0;transform:translateY(25cqw) rotate(-5deg)}}
+@keyframes drop2{0%,22%{opacity:0;transform:translateY(-35cqw) rotate(16deg)}30%,86%{opacity:1;transform:translateX(3cqw) rotate(4deg)}94%,100%{opacity:0;transform:translate(3cqw,25cqw) rotate(4deg)}}
+@keyframes drop3{0%,44%{opacity:0;transform:translateY(-35cqw) rotate(-10deg)}52%,86%{opacity:1;transform:translate(-2cqw,2cqw) rotate(-1deg)}94%,100%{opacity:0;transform:translate(-2cqw,27cqw) rotate(-1deg)}}
+@keyframes inout{0%,10%{opacity:0;transform:translateY(6cqw) scale(.94)}20%,85%{opacity:1;transform:none}93%,100%{opacity:0;transform:translateY(6cqw) scale(.94)}}
+@keyframes splitsc{0%,20%{transform:none}30%,82%{transform:translateY(42cqw)}92%,100%{transform:none}}
+@keyframes splitmat{0%,20%{transform:translateY(-101%)}30%,82%{transform:none}92%,100%{transform:translateY(-101%)}}
+@keyframes cutfull{0%,29.9%{opacity:0}30%,74.9%{opacity:1}75%,100%{opacity:0}}
+@keyframes rain{to{background-position:6cqw 0}}
+@keyframes rcl{0%,10%{opacity:0;transform:translateX(-20cqw) rotate(-8deg)}22%,85%{opacity:1;transform:rotate(-8deg)}95%,100%{opacity:0;transform:translateX(-20cqw) rotate(-8deg)}}
+@keyframes rcr{0%,10%{opacity:0;transform:translateX(20cqw) rotate(8deg)}22%,85%{opacity:1;transform:rotate(8deg)}95%,100%{opacity:0;transform:translateX(20cqw) rotate(8deg)}}
+@keyframes cucin{0%,10%{opacity:0;transform:perspective(60cqw) rotateX(35deg) translateY(10cqw)}22%,85%{opacity:1;transform:perspective(60cqw) rotateX(14deg)}95%,100%{opacity:0;transform:perspective(60cqw) rotateX(35deg) translateY(10cqw)}}
+@media (prefers-reduced-motion:reduce){.ph *,.ph{animation-play-state:paused!important;animation-delay:-1.7s!important}}
+</style>
+
+<div class="wrap">
+ <header>
+  <h1>sfv-edit <span>effects</span></h1>
+  <p class="intro">Every effect you can write in <code>plan.md</code>, looping on a stand-in speaker. Overlays use the deilbach look (teal bar, orange accent word). Motion is slowed and exaggerated so you can see it on a loop. Each card shows the plan line that triggers the effect.</p>
+  <div class="legend"><span class="badge" style="margin:0">deilbach rule</span> limits from your style file <span class="badge skip" style="margin:0">skipped in deilbach</span> not used in the calm look</div>
+ </header>
+ <div id="sections"></div>
+ <section>
+  <h2>Sound <small>sfx · click to play</small></h2>
+  <p class="sdesc">The files in <code>assets/sfx</code>. Use <code>- sfx whoosh-short @word vol=0.6</code>. Material effects play a whoosh and punch words play a pop on their own (style <code>sfx</code> map, gain 0.75). In deilbach, cutaways have no sound effect.</p>
+  <p class="sdesc"><b>Any other sound:</b> generate it with ElevenLabs (the sound-effects skill), e.g. "river rushing past" or "rain on a window, 2 s". Save the mp3 into <code>assets/sfx</code> and use it by name: <code>- sfx river-rush @water</code>. Your ElevenLabs key is in <code>videos/.env.local</code>. The free plan is for non-commercial use only.</p>
+  <div class="sfx" id="sfx"></div>
+ </section>
+ <section>
+  <h2>Not built yet</h2>
+  <div class="plain"><ul>
+   <li><b>kenburns</b>: slow zoom on a still photo</li>
+   <li><b>lower third</b>: name or title bar</li>
+   <li><b>date stamp</b></li>
+   <li><b>level colours</b>: colour a water level number by its gauge level (green → wine), deilbach palette</li>
+  </ul></div>
+ </section>
+ <p class="foot">Source: references/plan-format.md, references/overlays.md, styles/default.md and styles/deilbach.md in ~/.claude/skills/sfv-edit. The inserts section uses real frames from edits/day1-sfv and day2-sfv.</p>
+</div>
+
+<script>
+const IMG={receipt:"{{receipt}}",arch:"{{arch}}",map:"{{map}}"};
+const SFX={{sfx}};
+const subs=(a,b,c)=>`<div class="subs"><div class="ch"><span class="bar">${a}</span></div><div class="ch c2"><span class="bar">${b}</span></div><div class="ch c3"><span class="bar">${c}</span></div></div>`;
+const SUBS=subs("My family owns","a home next to","the <b>Deilbach</b>");
+const tag=t=>`<div class="tag">${t}</div>`;
+const SECTIONS=[
+ {h:"Automatic",n:"on by default",d:"You don't write these. They run on every video unless you turn them off.",items:[
+  {name:"cut-punch",desc:"A small punch-in at every cut that settles back in 0.32 s, so cuts don't look like jumps.",code:"cut_punch: on, scale 1.04  (style)",sc:"punch-sc",fg:tag("CUT")+SUBS},
+  {name:"subtitles",desc:"Every kept line runs as subtitles, up to 4 words per chunk, timed to the words. *word* turns orange.",code:"c1 14.15-17.78 | My family owns a home\n  next to the *Deilbach*",fg:SUBS}]},
+ {h:"Camera",n:"6",d:"The footage is never graded. Zooms always centre on the face.",items:[
+  {name:"zoom",desc:"Punch-in for one segment, centred on the face. 1.15–1.4 on every 2nd or 3rd same-clip segment.",code:"- zoom 1.3",sc:"zoom",fg:tag("CUT")},
+  {name:"no-punch",desc:"Hard cut without the automatic punch.",code:"- no-punch",fg:tag("CUT")},
+  {name:"push-in",desc:"Slow zoom from 1 to 1.04 across a calm, longer line.",code:"- push-in",sc:"push"},
+  {name:"focus-in",desc:"Blur to sharp, to open a new chapter. At most 2 per video.",code:"- focus-in",sc:"focus"},
+  {name:"light-sweep",desc:"One soft band of light across the frame.",code:"- light-sweep",fg:'<div class="sweep"></div>',badge:"skip"},
+  {name:"no-subs",desc:"Hides the subtitles for a span, e.g. while a line is shown big or a text-heavy card is up.",code:"- no-subs @four ..metres",fg:`<div class="ns-subs">${SUBS}</div><div class="fgt ns-top shadow">4,12 m</div>`}]},
+ {h:"Text",n:"8",d:"Text never covers eyes to chin. It sits in the chest band (y 1130–1290) unless you give y=.",items:[
+  {name:"caption-lead",desc:"Your signature caption: small lead line over a big line with one orange word, on the tight teal bar.",code:'- caption-lead "five years ago | the *biggest* flood" @five',fg:`<div class="fgt cap pop"><span class="lead"><span class="bar">five years ago</span></span><span class="big"><span class="bar">the <b>biggest</b> flood</span></span></div>`},
+  {name:"blur-pop",desc:"Big punch word that pops in from a blur.",code:'- blur-pop "*biggest*" @biggest',fg:`<div class="fgt punch pop shadow"><b>biggest</b></div>`,badge:"max 1 per section"},
+  {name:"behind-head",desc:"Big word on the wall behind your head. Needs cutout.py first.",code:'- behind-head "Deilbach" @Deilbach',behind:`<div class="behind pop shadow">Deilbach</div>`,badge:"once per video"},
+  {name:"caps-track",desc:"Eyebrow: small tracked capitals, words slide in one by one. For a place or date.",code:'- caps-track "ESSEN, JULI 2021" @Essen',fg:`<div class="fgt caps"><span class="w" style="--i:0"><span class="bar">Essen,</span></span> <span class="w" style="--i:1"><span class="bar">Juli</span></span> <span class="w" style="--i:2"><span class="bar">2021</span></span></div>`},
+  {name:"serif-rise",desc:"Big word whose letters rise from a mask. In deilbach it's Space Grotesk, used for numbers.",code:'- serif-rise "2021" @2021',fg:`<div class="fgt rise shadow">${[..."2021"].map((c,i)=>`<span class="m"><span style="--i:${i}">${c}</span></span>`).join("")}</div>`},
+  {name:"italic-punch",desc:"Softer emphasis: one word in the accent colour (no italics in deilbach).",code:'- italic-punch "century" @century',fg:`<div class="fgt ital pop shadow">century</div>`},
+  {name:"sparkle",desc:"Three twinkles around a point.",code:"- sparkle x=760 y=1050",fg:`<div class="spk" style="left:70cqw;top:96cqw;font-size:9cqw">✦</div><div class="spk" style="left:82cqw;top:88cqw;font-size:5cqw;animation-delay:.3s">✦</div><div class="spk" style="left:78cqw;top:107cqw;font-size:6cqw;animation-delay:.6s">✦</div>`,badge:"skip"},
+  {name:"hand-note",desc:"Handwritten label with a drawn arrow pointing at something in the frame.",code:'- hand-note "my house" x=120 y=180 to=760,330',behind:'<div class="frame"></div>',fg:`<div class="note">my house</div><svg class="arrow" viewBox="0 0 100 178"><path pathLength="100" d="M34 22 Q52 34 68 22 M68 22 l-5 -1 M68 22 l-2 4.5"/></svg>`,badge:"skip"}]},
+ {h:"Your photos and clips",n:"8",d:"Rounded corners and a soft shadow, no frames. In deilbach, photos are pip or photo-stack (big, centred, down to y 1600), and portrait clips go full screen as cutaway.",items:[
+  {name:"photo-stack",desc:"Prints drop onto a pile below the chin, each on its own word. They all leave together.",code:"- photo-stack flood1.jpg@water\n  flood2.jpg@street flood3.jpg@cellar",fg:`<div class="print mat p1"></div><div class="print mat2 p2"></div><div class="print mat3 p3"></div>`},
+  {name:"pip",desc:"A photo or clip under the chin while you stay visible. Several files swap in turn.",code:"- pip gauge.jpg @gauge",fg:`<div class="pip mat2"><span class="lbl">gauge.jpg</span></div>`},
+  {name:"split",desc:"Material fills the top and you move down.",code:"- split chart.png @this",sc:"splitsc",fg:`<div class="splitmat mat3"><span class="lbl">chart.png</span></div>`,badge:"only when you point up"},
+  {name:"cutaway",desc:"Full screen, hard cut in and out. Voice and subtitles keep running; sound= plays the clip's own audio.",code:"- cutaway timelapse.mp4 @rain ..sec\n  sound=0.5",fg:`<div class="cutfull mat"><div class="rain"></div><span class="lbl">timelapse.mp4</span></div>`+SUBS},
+  {name:"reel-cards",desc:"Other people's portrait clips, tilted beside your face, always credited.",code:"- reel-cards a.mp4 b.mp4 credit=@handle",fg:`<div class="rc rcL mat"><span class="cr">@handle</span></div><div class="rc rcR mat3"><span class="cr">@handle</span></div>`},
+  {name:"orbit",desc:"Portrait tiles circle you, passing behind your head when the cutout exists.",code:"- orbit a.jpg b.jpg c.jpg d.jpg e.jpg",orbit:true,badge:"skip"},
+  {name:"window-behind",desc:"An animated insert built by a sub-agent, placed on the wall behind you.",code:"- window-behind agents/app/renders/app.webm\n  @drag left=90 top=200 w=900 h=650",behind:`<div class="win"><div class="tb"><i></i><i></i><i></i></div><div class="ln o"></div><div class="ln"></div><div class="ln" style="width:60%"></div><div class="ln"></div></div>`},
+  {name:"card-under-chin",desc:"An animated insert built by a sub-agent, shown as a card under your face with a 3D tilt.",code:"- card-under-chin agents/code/renders/\n  code.webm scale=.72 tilt=12",fg:`<div class="cuc"><i></i><i></i><i></i><i></i><i></i><i></i></div>`}]},
+ {h:"Animated inserts made so far",n:"real frames",d:"Built by sub-agents for your videos and placed with the effects above. claude-desktop, ig-follow and skill-md are also examples in the skill, but there are no renders of them in this folder.",items:[
+  {name:"receipt",desc:"Day 1. A receipt prints one cost line at a time, with FREE stamps and a crossed-out total. Shown in the top-right corner with no-subs.",code:"- card-under-chin agents/receipt/renders/\n  receipt-total.webm left=715 top=230\n  w=320 h=400 tilt=0 scale=1",fg:`<img class="ins" alt="Receipt insert" src="${IMG.receipt}" style="left:63cqw;top:16cqw;width:34cqw">`},
+  {name:"arch-strip",desc:"Day 1. System diagram, boxes and arrows only. The part you're talking about lights orange. Below the chin, scale .85.",code:"- card-under-chin agents/arch/renders/\n  arch-db.webm left=60 top=1185 w=960\n  h=330 tilt=0 scale=.85",fg:`<img class="ins" alt="Architecture strip insert" src="${IMG.arch}" style="left:7cqw;top:106cqw;width:86cqw">`},
+  {name:"map-cutaway",desc:"Day 2. Your catchment map, animated full screen: zones switch on, gauges ring, flow runs down every stream.",code:"- cutaway agents/map/renders/map.mp4\n  @map ..sec",fg:`<img class="insfull" alt="Map cutaway frame" src="${IMG.map}">`+SUBS}]}
+];
+const phone=it=>`<div class="ph"><div class="sc ${it.sc||""}"><div class="wall"></div>${it.behind||""}<div class="nk"></div><div class="bd"></div><div class="hd"></div>${it.orbit?'<div class="orb"></div>':""}</div>${it.fg||""}</div>`;
+const badge=b=>!b?"":b==="skip"?'<span class="badge skip">skipped in deilbach</span>':`<span class="badge">${b}</span>`;
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+document.getElementById("sections").outerHTML=SECTIONS.map(s=>`<section><h2>${s.h} <small>${s.n}</small></h2><p class="sdesc">${s.d}</p><div class="grid">${s.items.map(it=>`<article class="card">${phone(it)}<div><h3>${it.name}</h3><p>${it.desc}</p><code class="pl">${esc(it.code)}</code>${badge(it.badge)}</div></article>`).join("")}</div></section>`).join("");
+
+// orbit: tiles go behind the speaker on the far half of the ellipse
+const orb=document.querySelector(".orb");
+if(orb){const sc=orb.parentElement,mats=["mat","mat2","mat3","mat","mat2"];
+ const tiles=mats.map(m=>{const t=document.createElement("div");t.className="ot "+m;sc.appendChild(t);return t});
+ const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const draw=ms=>{const a0=ms/5200*2*Math.PI;tiles.forEach((t,i)=>{const a=a0+i*2*Math.PI/5,s=Math.sin(a);
+  t.style.left=(42.5+42*Math.cos(a))+"cqw";t.style.top=(88+12*s)+"cqw";t.style.zIndex=s>0?4:1;t.style.transform=`scale(${.8+.2*s})`});
+  if(!still)requestAnimationFrame(draw)};
+ draw(0);}
+
+const box=document.getElementById("sfx");
+Object.entries(SFX).forEach(([k,u])=>{const b=document.createElement("button");b.type="button";b.id="sfx-"+k;b.textContent=k;b.onclick=()=>new Audio(u).play().catch(()=>{});box.appendChild(b)});
+</script>

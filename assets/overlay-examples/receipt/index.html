@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=640, height=800" />
+<link rel="stylesheet" href="assets/fonts/fonts.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:640px;height:800px;overflow:hidden;background:transparent}
+#root{position:relative;width:640px;height:800px;overflow:hidden;background:transparent}
+#wrap{position:absolute;left:0;top:0;width:640px;height:800px;
+  filter:drop-shadow(0 1px 1.5px rgba(30,25,15,.22)) drop-shadow(0 9px 11px rgba(30,25,15,.24))}
+#bump{position:absolute;left:0;top:0;width:640px;height:800px}
+#rcpt{position:absolute;left:61px;top:42px;width:560px;transform:rotate(4deg);transform-origin:50% 0}
+#body{position:relative;width:560px;height:414px;overflow:hidden;background:#faf8f0;
+  background-image:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 90px),
+    linear-gradient(90deg,rgba(120,100,60,.05),rgba(120,100,60,0) 22px,rgba(120,100,60,0) 538px,rgba(120,100,60,.05));
+  color:#1d1d1b}
+#teeth{display:block;margin-top:-0.5px}
+#title{position:absolute;left:0;top:34px;width:560px;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:50px;line-height:58px;letter-spacing:.015em}
+#sub{position:absolute;left:0;top:94px;width:560px;text-align:center;font-family:'Manrope',sans-serif;font-weight:500;
+  font-size:25px;line-height:32px;color:#6b675e;letter-spacing:.03em}
+.rule{position:absolute;left:34px;width:492px;height:2px;background:#1d1d1b;transform-origin:0 50%}
+.row{position:absolute;left:34px;width:492px;height:56px;display:flex;align-items:baseline;white-space:pre;
+  font-family:'JetBrains Mono',monospace;font-weight:500;font-size:30px;line-height:56px;font-variant-ligatures:none;color:#1d1d1b}
+.ld{flex:1;height:3px;margin:0 9px;background-image:radial-gradient(circle,currentColor 1.4px,transparent 1.7px);
+  background-size:11px 3px;background-repeat:repeat-x;background-position:0 0;opacity:.55}
+.pr{text-align:right}
+.new{color:#fa7c20}
+.stamp{position:absolute;right:-6px;top:6px;padding:0 12px;border:3.5px solid oklch(72% .18 50);border-radius:9px;color:oklch(72% .18 50);
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;line-height:38px;letter-spacing:.08em;
+  transform:rotate(-9deg);mix-blend-mode:multiply;background:rgba(250,248,240,.35)}
+#tot{position:absolute;left:34px;top:422px;width:492px;height:88px;display:flex;align-items:baseline;
+  justify-content:space-between;white-space:pre;font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:88px}
+#totl{font-size:46px;letter-spacing:.04em}
+#totp{font-size:78px;color:oklch(72% .18 50);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+#tp0{display:inline-block;transform-origin:50% 70%}
+#sup{position:absolute;left:34px;top:512px;width:492px;height:46px;display:flex;justify-content:space-between;
+  white-space:pre;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:28px;line-height:46px;color:#8f8b82}
+#strike{position:absolute;left:-8px;right:-8px;top:22px;height:4px;border-radius:2px;background:oklch(72% .18 50);
+  transform-origin:0 50%;transform:rotate(-1.5deg)}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="7.4" data-width="640" data-height="800">
+<div id="wrap"><div id="bump"><div id="rcpt">
+<div id="body">
+<div id="title">DEILBACH PEGEL</div><div id="sub">monthly running cost</div><div class="rule" style="top:146px"></div><div class="row" id="r0" style="top:166px"><span class="nm"><span class="c" id="l0n0">D</span><span class="c" id="l0n1">a</span><span class="c" id="l0n2">t</span><span class="c" id="l0n3">a</span><span class="c" id="l0n4">b</span><span class="c" id="l0n5">a</span><span class="c" id="l0n6">s</span><span class="c" id="l0n7">e</span><span class="c" id="l0n8"> </span><span class="c" id="l0n9">·</span><span class="c" id="l0n10"> </span><span class="c" id="l0n11">N</span><span class="c" id="l0n12">e</span><span class="c" id="l0n13">o</span><span class="c" id="l0n14">n</span></span><span class="ld" id="ld0"></span><span class="pr"><span class="c" id="l0p0">0</span><span class="c" id="l0p1">.</span><span class="c" id="l0p2">0</span><span class="c" id="l0p3">0</span><span class="c" id="l0p4"> </span><span class="c" id="l0p5">€</span></span><div class="stamp" id="st0">FREE</div></div><div class="row" id="r1" style="top:222px"><span class="nm"><span class="c" id="l1n0">S</span><span class="c" id="l1n1">e</span><span class="c" id="l1n2">r</span><span class="c" id="l1n3">v</span><span class="c" id="l1n4">i</span><span class="c" id="l1n5">c</span><span class="c" id="l1n6">e</span><span class="c" id="l1n7"> </span><span class="c" id="l1n8">·</span><span class="c" id="l1n9"> </span><span class="c" id="l1n10">A</span><span class="c" id="l1n11">W</span><span class="c" id="l1n12">S</span><span class="c" id="l1n13"> </span><span class="c" id="l1n14">j</span><span class="c" id="l1n15">o</span><span class="c" id="l1n16">b</span></span><span class="ld" id="ld1"></span><span class="pr"><span class="c" id="l1p0">3</span><span class="c" id="l1p1">–</span><span class="c" id="l1p2">4</span><span class="c" id="l1p3"> </span><span class="c" id="l1p4">€</span></span></div><div class="row" id="r2" style="top:278px"><span class="nm"><span class="c" id="l2n0">A</span><span class="c" id="l2n1">P</span><span class="c" id="l2n2">I</span><span class="c" id="l2n3"> </span><span class="c" id="l2n4">·</span><span class="c" id="l2n5"> </span><span class="c" id="l2n6">F</span><span class="c" id="l2n7">a</span><span class="c" id="l2n8">s</span><span class="c" id="l2n9">t</span><span class="c" id="l2n10">A</span><span class="c" id="l2n11">P</span><span class="c" id="l2n12">I</span></span><span class="ld" id="ld2"></span><span class="pr"><span class="c" id="l2p0">0</span><span class="c" id="l2p1">.</span><span class="c" id="l2p2">0</span><span class="c" id="l2p3">0</span><span class="c" id="l2p4"> </span><span class="c" id="l2p5">€</span></span><div class="stamp" id="st2">FREE</div></div><div class="row" id="r3" style="top:334px"><span class="nm"><span class="c" id="l3n0">W</span><span class="c" id="l3n1">e</span><span class="c" id="l3n2">b</span><span class="c" id="l3n3">s</span><span class="c" id="l3n4">i</span><span class="c" id="l3n5">t</span><span class="c" id="l3n6">e</span><span class="c" id="l3n7"> </span><span class="c" id="l3n8">·</span><span class="c" id="l3n9"> </span><span class="c" id="l3n10">C</span><span class="c" id="l3n11">l</span><span class="c" id="l3n12">o</span><span class="c" id="l3n13">u</span><span class="c" id="l3n14">d</span><span class="c" id="l3n15">F</span><span class="c" id="l3n16">r</span><span class="c" id="l3n17">o</span><span class="c" id="l3n18">n</span><span class="c" id="l3n19">t</span></span><span class="ld" id="ld3"></span><span class="pr"><span class="c" id="l3p0">0</span><span class="c" id="l3p1">.</span><span class="c" id="l3p2">0</span><span class="c" id="l3p3">0</span><span class="c" id="l3p4"> </span><span class="c" id="l3p5">€</span></span><div class="stamp" id="st3">FREE</div></div><div class="rule" id="ru1" style="top:404px"></div><div class="rule" id="ru2" style="top:410px"></div><div id="tot"><span id="totl"><span class="c" id="t0">T</span><span class="c" id="t1">O</span><span class="c" id="t2">T</span><span class="c" id="t3">A</span><span class="c" id="t4">L</span></span><span id="totp"><span class="c" id="tp0">3</span><span class="c" id="tp1">–</span><span class="c" id="tp2">4</span><span class="c" id="tp3"> </span><span class="c" id="tp4">€</span></span></div><div id="sup"><span><span class="c" id="sa0">S</span><span class="c" id="sa1">u</span><span class="c" id="sa2">p</span><span class="c" id="sa3">a</span><span class="c" id="sa4">b</span><span class="c" id="sa5">a</span><span class="c" id="sa6">s</span><span class="c" id="sa7">e</span><span class="c" id="sa8"> </span><span class="c" id="sa9">+</span><span class="c" id="sa10"> </span><span class="c" id="sa11">V</span><span class="c" id="sa12">e</span><span class="c" id="sa13">r</span><span class="c" id="sa14">c</span><span class="c" id="sa15">e</span><span class="c" id="sa16">l</span></span><span><span class="c" id="sb0">4</span><span class="c" id="sb1">0</span><span class="c" id="sb2"> </span><span class="c" id="sb3">€</span></span><div id="strike"></div></div>
+</div>
+<svg id="teeth" width="560" height="15" viewBox="0 0 560 15"><polygon points="0,0 10.6,9.8 22.9,0.1 34.6,10.8 43.8,1.0 53.0,11.2 62.4,0.2 73.5,13.1 83.1,0.4 95.3,13.7 107.1,0.8 121.0,9.2 134.3,0.6 144.0,9.6 154.6,1.6 164.5,11.9 176.7,0.7 188.4,9.3 197.7,0.4 210.1,11.1 220.7,1.2 232.0,10.5 244.9,1.4 255.1,11.9 266.8,1.8 279.4,10.4 293.3,0.2 304.4,12.8 314.2,1.0 323.4,12.3 336.2,1.1 349.6,10.6 362.0,1.2 373.9,11.3 387.1,1.9 398.5,12.3 407.8,1.4 420.1,14.0 433.2,0.6 444.1,12.3 453.2,0.9 463.0,9.6 472.3,1.5 482.0,10.2 492.9,1.7 502.3,11.2 514.1,1.8 527.2,13.3 537.6,0.8 548.4,13.4 560.0,0.3 560,0" fill="#faf8f0"/></svg>
+</div></div></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+gsap.set('#wrap',{autoAlpha:0,y:-46});
+gsap.set('#bump',{y:0});
+gsap.set('#st0',{autoAlpha:1,scale:1});
+gsap.set('#r0 .pr',{opacity:0});
+gsap.set('#st2',{autoAlpha:1,scale:1});
+gsap.set('#r2 .pr',{opacity:0});
+gsap.set('#st3',{autoAlpha:1,scale:1});
+gsap.set('#r3 .pr',{opacity:0});
+tl.to('#wrap',{autoAlpha:1,duration:.18,ease:'power1.out'},0);
+tl.to('#wrap',{y:0,duration:.3,ease:'back.out(2.2)'},0);
+gsap.set(['#ru1','#ru2'],{scaleX:0});
+gsap.set(['#tot .c','#sup .c'],{autoAlpha:0});
+gsap.set('#strike',{scaleX:0,rotation:-1.5});
+tl.to('#body',{height:526,duration:.3,ease:'power2.out'},1.150);
+tl.to('#ru1',{scaleX:1,duration:.26,ease:'power2.out'},1.190);
+tl.to('#ru2',{scaleX:1,duration:.26,ease:'power2.out'},1.240);
+tl.set('#t0',{autoAlpha:1},1.290);
+tl.set('#t1',{autoAlpha:1},1.330);
+tl.set('#t2',{autoAlpha:1},1.370);
+tl.set('#t3',{autoAlpha:1},1.410);
+tl.set('#t4',{autoAlpha:1},1.450);
+tl.set('#tp0',{autoAlpha:1},2.030);
+tl.set('#tp1',{autoAlpha:1},2.300);
+tl.set('#tp2',{autoAlpha:1},2.360);
+tl.set('#tp3',{autoAlpha:1},2.430);
+tl.set('#tp4',{autoAlpha:1},2.510);
+tl.fromTo('#tp0',{scale:1.35},{scale:1,duration:.22,ease:'back.out(2)',immediateRender:false},2.030);
+tl.to('#body',{height:584,duration:.28,ease:'power2.out'},3.430);
+tl.set('#sa0',{autoAlpha:1},3.470);
+tl.set('#sa1',{autoAlpha:1},3.490);
+tl.set('#sa2',{autoAlpha:1},3.510);
+tl.set('#sa3',{autoAlpha:1},3.530);
+tl.set('#sa4',{autoAlpha:1},3.550);
+tl.set('#sa5',{autoAlpha:1},3.570);
+tl.set('#sa6',{autoAlpha:1},3.590);
+tl.set('#sa7',{autoAlpha:1},3.610);
+tl.set('#sa8',{autoAlpha:1},3.630);
+tl.set('#sa9',{autoAlpha:1},3.650);
+tl.set('#sa10',{autoAlpha:1},3.670);
+tl.set('#sa11',{autoAlpha:1},3.690);
+tl.set('#sa12',{autoAlpha:1},3.710);
+tl.set('#sa13',{autoAlpha:1},3.730);
+tl.set('#sa14',{autoAlpha:1},3.750);
+tl.set('#sa15',{autoAlpha:1},3.770);
+tl.set('#sa16',{autoAlpha:1},3.790);
+tl.set('#sb0',{autoAlpha:1},3.870);
+tl.set('#sb1',{autoAlpha:1},3.900);
+tl.set('#sb2',{autoAlpha:1},3.930);
+tl.set('#sb3',{autoAlpha:1},3.960);
+tl.to('#strike',{scaleX:1,duration:.24,ease:'power2.inOut'},4.2);
+tl.to('#wrap',{autoAlpha:0,y:-22,duration:.25,ease:'power2.in'},7.150);
+tl.set({}, {}, 7.4);
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

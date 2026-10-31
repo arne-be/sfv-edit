@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=960, height=330" />
+<link rel="stylesheet" href="assets/fonts/fonts.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:block;src:url('assets/fonts/Manrope-variable.woff2') format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:block;src:url('assets/fonts/SpaceGrotesk-variable.woff2') format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--fill:oklch(22% .025 215 / .92);--idle:oklch(76% .02 215 / .6);--muted:oklch(76% .02 215 / .55);
+  --txt:oklch(97% .005 90);--or:oklch(72% .18 50)}
+html,body{width:960px;height:330px;overflow:hidden;background:transparent}
+#root{position:relative;width:960px;height:330px;overflow:hidden;background:transparent}
+#stage{position:absolute;inset:0}
+svg{position:absolute;left:0;top:0;overflow:visible}
+.box{position:absolute;width:230px;height:90px;border-radius:14px;background:var(--fill);
+  border:2px solid var(--idle);box-shadow:0 8px 20px rgba(8,16,20,.38),0 2px 5px rgba(8,16,20,.28)}
+.ring{position:absolute;inset:-2px;border-radius:14px;border:2.5px solid var(--or);
+  box-shadow:0 0 16px oklch(72% .18 50 / .35),inset 0 0 10px oklch(72% .18 50 / .12)}
+.nm{position:absolute;left:0;right:0;top:0;height:86px;display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-weight:650;font-size:31px;letter-spacing:-.01em;color:var(--txt)}
+.nm.on{color:var(--or)}
+.tag{position:absolute;left:0;right:0;top:50px;text-align:center;font-family:'Manrope',sans-serif;font-weight:700;
+  font-size:22px;color:var(--or)}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="6.6" data-fps="30" data-width="960" data-height="330">
+<div id="stage">
+<svg width="960" height="330" viewBox="0 0 960 330"><path id="ds_svc-c" d="M258,259.0 L357,259.0" stroke="oklch(22% .025 215 / .8)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="ds_svc-ch" d="M348,252.0 L357,259.0 L348,266.0" stroke="oklch(22% .025 215 / .8)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path id="ds_svc-i" d="M258,259.0 L357,259.0" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" fill="none"/><path id="ds_svc-ih" d="M348,252.0 L357,259.0 L348,266.0" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path id="ds_svc-l" d="M258,259.0 L357,259.0" stroke="var(--or)" stroke-width="3" stroke-linecap="round" fill="none"/><path id="ds_svc-lh" d="M348,252.0 L357,259.0 L348,266.0" stroke="var(--or)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle id="ds_svc-d0" cx="0" cy="0" r="5" fill="var(--or)"/><circle id="ds_svc-d1" cx="0" cy="0" r="5" fill="var(--or)"/><circle id="ds_svc-d2" cx="0" cy="0" r="5" fill="var(--or)"/><path id="svc_web-c" d="M603,259.0 L702,259.0" stroke="oklch(22% .025 215 / .8)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="svc_web-ch" d="M693,252.0 L702,259.0 L693,266.0" stroke="oklch(22% .025 215 / .8)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path id="svc_web-i" d="M603,259.0 L702,259.0" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" fill="none"/><path id="svc_web-ih" d="M693,252.0 L702,259.0 L693,266.0" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path id="svc_web-l" d="M603,259.0 L702,259.0" stroke="var(--or)" stroke-width="3" stroke-linecap="round" fill="none"/><path id="svc_web-lh" d="M693,252.0 L702,259.0 L693,266.0" stroke="var(--or)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle id="svc_web-d0" cx="0" cy="0" r="5" fill="var(--or)"/><circle id="svc_web-d1" cx="0" cy="0" r="5" fill="var(--or)"/><circle id="svc_web-d2" cx="0" cy="0" r="5" fill="var(--or)"/><path id="svc_db-c" d="M480,214 L480,110" stroke="oklch(22% .025 215 / .8)" stroke-width="7" stroke-linecap="round" fill="none"/><path id="svc_db-i" d="M480,214 L480,110" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" fill="none"/><path id="svc_db-l" d="M480,214 L480,110" stroke="var(--or)" stroke-width="3" stroke-linecap="round" fill="none"/><circle id="svc_db-d0" cx="0" cy="0" r="5" fill="var(--or)"/><circle id="svc_db-d1" cx="0" cy="0" r="5" fill="var(--or)"/><circle id="svc_db-d2" cx="0" cy="0" r="5" fill="var(--or)"/></svg>
+<div class="box" id="ds" style="left:20px;top:214px"><div class="ring" id="ds-ring"></div><div class="nm-wrap" id="ds-nmw"><div class="nm" id="ds-nm">Data sources</div><div class="nm on" id="ds-nmo">Data sources</div></div></div><div class="box" id="svc" style="left:365px;top:214px"><div class="ring" id="svc-ring"></div><div class="nm-wrap" id="svc-nmw"><div class="nm" id="svc-nm">Service</div><div class="nm on" id="svc-nmo">Service</div></div></div><div class="box" id="web" style="left:710px;top:214px"><div class="ring" id="web-ring"></div><div class="nm-wrap" id="web-nmw"><div class="nm" id="web-nm">Website</div><div class="nm on" id="web-nmo">Website</div></div></div><div class="box" id="db" style="left:365px;top:20px"><div class="ring" id="db-ring"></div><div class="nm-wrap" id="db-nmw"><div class="nm" id="db-nm">Database</div><div class="nm on" id="db-nmo">Database</div></div></div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+gsap.set('.box',{autoAlpha:0,y:14});
+gsap.set('.ring,.nm.on,.tag',{autoAlpha:0});
+gsap.set('circle',{autoAlpha:0});
+gsap.set('#ds_svc-c',{strokeDasharray:99.0,strokeDashoffset:99.0});
+gsap.set('#ds_svc-ch',{autoAlpha:0});
+gsap.set('#ds_svc-i',{strokeDasharray:99.0,strokeDashoffset:99.0});
+gsap.set('#ds_svc-ih',{autoAlpha:0});
+gsap.set('#ds_svc-l',{strokeDasharray:99.0,strokeDashoffset:99.0});
+gsap.set('#ds_svc-lh',{autoAlpha:0});
+gsap.set('#svc_web-c',{strokeDasharray:99.0,strokeDashoffset:99.0});
+gsap.set('#svc_web-ch',{autoAlpha:0});
+gsap.set('#svc_web-i',{strokeDasharray:99.0,strokeDashoffset:99.0});
+gsap.set('#svc_web-ih',{autoAlpha:0});
+gsap.set('#svc_web-l',{strokeDasharray:99.0,strokeDashoffset:99.0});
+gsap.set('#svc_web-lh',{autoAlpha:0});
+gsap.set('#svc_db-c',{strokeDasharray:104,strokeDashoffset:104});
+gsap.set('#svc_db-i',{strokeDasharray:104,strokeDashoffset:104});
+gsap.set('#svc_db-l',{strokeDasharray:104,strokeDashoffset:104});
+tl.to('#ds',{autoAlpha:1,y:0,duration:0.42,ease:'power2.out'},0.000);
+tl.to('#svc',{autoAlpha:1,y:0,duration:0.42,ease:'power2.out'},0.080);
+tl.to('#web',{autoAlpha:1,y:0,duration:0.42,ease:'power2.out'},0.160);
+tl.to('#db',{autoAlpha:1,y:0,duration:0.42,ease:'power2.out'},0.240);
+tl.to(['#ds_svc-c','#ds_svc-i'],{strokeDashoffset:0,duration:0.38,ease:'power1.inOut'},0.32);
+tl.to(['#ds_svc-ch','#ds_svc-ih'],{autoAlpha:1,duration:.15,ease:'power1.out'},0.600);
+tl.to(['#svc_web-c','#svc_web-i'],{strokeDashoffset:0,duration:0.38,ease:'power1.inOut'},0.32);
+tl.to(['#svc_web-ch','#svc_web-ih'],{autoAlpha:1,duration:.15,ease:'power1.out'},0.600);
+tl.to(['#svc_db-c','#svc_db-i'],{strokeDashoffset:0,duration:0.38,ease:'power1.inOut'},0.32);
+tl.to(['#db-ring','#db-nmo'],{autoAlpha:1,duration:0.28,ease:'power1.inOut'},1.9);
+tl.to('#db-nm',{autoAlpha:0,duration:0.28,ease:'power1.inOut'},1.9);
+tl.to(['#db-ring','#db-nmo'],{autoAlpha:0,duration:0.28,ease:'power1.inOut'},3.62);
+tl.to('#db-nm',{autoAlpha:1,duration:0.28,ease:'power1.inOut'},3.62);
+tl.to(['#svc-ring','#svc-nmo'],{autoAlpha:1,duration:0.28,ease:'power1.inOut'},3.62);
+tl.to('#svc-nm',{autoAlpha:0,duration:0.28,ease:'power1.inOut'},3.62);
+tl.to(['#svc-ring','#svc-nmo'],{autoAlpha:0,duration:0.28,ease:'power1.inOut'},6.08);
+tl.to('#svc-nm',{autoAlpha:1,duration:0.28,ease:'power1.inOut'},6.08);
+tl.to(['#web-ring','#web-nmo'],{autoAlpha:1,duration:0.28,ease:'power1.inOut'},6.08);
+tl.to('#web-nm',{autoAlpha:0,duration:0.28,ease:'power1.inOut'},6.08);
+tl.to('#stage',{autoAlpha:0,duration:0.25,ease:'power1.in'},6.350);
+tl.set({}, {}, 6.6);
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

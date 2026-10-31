@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+node_modules/
+.DS_Store
+# machine-specific, written by setup
+.platform.json
+config.json
+# built from references/effects-gallery/template.html by build.py
+references/effects-gallery/effects-gallery.html
